@@ -1,0 +1,16 @@
+package org.JavaEnthusiast;
+
+import com.google.gson.Gson;
+
+public class JsonConverter {
+
+    private Gson gson;
+
+    public JsonConverter(){
+        gson = new Gson();
+    }
+
+    public String ConvertToJson(Object object){
+        return gson.toJson(object);
+    }
+}
