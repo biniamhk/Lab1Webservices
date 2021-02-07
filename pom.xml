@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.JavaEnthusiast</groupId>
-    <artifactId>Lab1_WebService</artifactId>
+    <artifactId>Lab1-WebService</artifactId>
     <version>${revision}</version>
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
@@ -16,10 +16,11 @@
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <junit>5.7.0</junit>
     </properties>
-    <name>Lab1_WebService</name>
+    <name>Lab1-WebService</name>
     <packaging>pom</packaging>
     <modules>
         <module>Server</module>
+        <module>Plugin</module>
     </modules>
     <dependencies>
         <dependency>
