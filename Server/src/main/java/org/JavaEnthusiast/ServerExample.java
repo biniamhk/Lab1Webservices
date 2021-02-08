@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Server {
+public class ServerExample {
 
     public static void main(String[] args) {
 
