@@ -1,7 +1,7 @@
 module Server {
     requires org.JavaEnthusiast.spi;
     requires org.JavaEnthusiast.FileUtils;
-    requires com.google.gson;
+//    requires com.google.gson;
 
 //    requires org.mongodb.driver.sync.client;
 //    requires org.mongodb.driver.core;
