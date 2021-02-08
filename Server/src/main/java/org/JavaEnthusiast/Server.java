@@ -1,8 +1,8 @@
 package org.JavaEnthusiast;
 
-import org.JavaEnthusiast.fileutils.FileReader;
-import org.JavaEnthusiast.models.Todo;
 import org.JavaEnthusiast.models.Todos;
+import org.JavaEnthusiast.FileUtils.FileReader;
+import org.JavaEnthusiast.models.Todo;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -19,15 +19,15 @@ public class Server {
         ExecutorService executorService = Executors.newCachedThreadPool();
 
         try {
+            //TCP/IP
             ServerSocket serverSocket = new ServerSocket(5050);
             System.out.println(Thread.currentThread());
 
-            while (true){
+            while (true) {
                 Socket socket = serverSocket.accept();
-
                 executorService.execute(() -> handleConnection(socket));
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -55,7 +55,6 @@ public class Server {
 //            else
 //                //It's a file
 
-
             var output = new PrintWriter(socket.getOutputStream());
 //            String page = """
 //                    <html>
@@ -74,7 +73,7 @@ public class Server {
 
             output.println("HTTP/1.1 200 OK");
             output.println("Content-Length:" + page.length);
-            output.println("Content-Type:"+contentType);  //application/json
+            output.println("Content-Type:" + contentType);  //application/json
             output.println("");
             //output.print(page);
             output.flush();
@@ -88,16 +87,11 @@ public class Server {
         }
     }
 
-    private static void handleTodosURL() {
-
-    }
-
     private static String readHeaders(BufferedReader input) throws IOException {
         String requestedUrl = "";
         while (true) {
             String headerLine = input.readLine();
-            if( headerLine.startsWith("GET"))
-            {
+            if (headerLine.startsWith("GET")) {
                 requestedUrl = headerLine.split(" ")[1];
             }
             System.out.println(headerLine);
@@ -117,9 +111,5 @@ public class Server {
 
         var json = converter.convertToJson(todos);
         System.out.println(json);
-    }
-
-    private static String handleProductsURL(){
-        return "";
     }
 }

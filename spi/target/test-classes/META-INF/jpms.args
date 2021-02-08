@@ -1,0 +1,4 @@
+--patch-module
+org.JavaEnthusiast.spi=_
+--add-reads
+org.JavaEnthusiast.spi=ALL-UNNAMED

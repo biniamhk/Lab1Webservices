@@ -2,18 +2,23 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
+      <profile name="Annotation profile for Lab1-WebService" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.16/lombok-1.18.16.jar" />
+        </processorPath>
         <module name="Server" />
-        <module name="SPI" />
-        <module name="FileUtils" />
-        <module name="Plugin" />
+        <module name="fileutils" />
+        <module name="spi" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="File" target="15" />
+      <module name="FileUtils" target="15" />
+      <module name="Plugin" target="15" />
+      <module name="SPI" target="15" />
     </bytecodeTargetLevel>
   </component>
 </project>

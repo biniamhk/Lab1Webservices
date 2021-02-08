@@ -6,7 +6,7 @@ public class JsonConverter {
 
     private Gson gson;
 
-    public JsonConverter(){
+    public JsonConverter() {
         gson = new Gson();
     }
 
