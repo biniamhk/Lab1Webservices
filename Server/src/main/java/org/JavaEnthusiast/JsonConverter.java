@@ -10,7 +10,7 @@ public class JsonConverter {
         gson = new Gson();
     }
 
-    public String ConvertToJson(Object object){
+    public String convertToJson(Object object){
         return gson.toJson(object);
     }
 }

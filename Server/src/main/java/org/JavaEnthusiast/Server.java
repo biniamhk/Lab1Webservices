@@ -1,17 +1,20 @@
 package org.JavaEnthusiast;
 
+import org.JavaEnthusiast.fileutils.FileReader;
+import org.JavaEnthusiast.models.Todo;
+import org.JavaEnthusiast.models.Todos;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Server {
 
     public static void main(String[] args) {
-
-        File file = new File("web\\index.html");
-        new Server().readFromFile(file);
 
         ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -22,75 +25,101 @@ public class Server {
             while (true){
                 Socket socket = serverSocket.accept();
 
-                executorService.execute(() -> handleConnections(socket));
+                executorService.execute(() -> handleConnection(socket));
             }
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    private static void handleConnections(Socket socket) {
+    private static void handleConnection(Socket socket) {
         System.out.println(Thread.currentThread());
-
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            while (true){
-                String headerLine = input.readLine();
-                System.out.println(headerLine);
-                if (headerLine.isEmpty())
-                    break;
-            }
+            String url = readHeaders(input);
+
+//            if( url.equals("/products"))
+//                handleProductsURL();
+//            else if( url.equals("/todos"))
+//                handleTodosURL();
+//
+//            Map<String,  URLHandler > routes = new HashMap<>();
+//
+//            routes.put("/products", new ProductsHandler());
+//            routes.put("/todos", new TodosHandler());
+//
+//            var handler = routes.get(url);
+//            if( handler != null)
+//                handler.handleURL();
+//            else
+//                //It's a file
+
 
             var output = new PrintWriter(socket.getOutputStream());
-            String page = """
-                    <html>
-                    <head>
-                    <title>Hello World!</title>
-                    </head>
-                    <body>
-                    <h1>Hello There!</h1>
-                    <div>First Page</div>
-                    </body>
-                    </html>""";
+//            String page = """
+//                    <html>
+//                    <head>
+//                        <title>Hello World!</title>
+//                    </head>
+//                    <body>
+//                    <h1>Hello there</h1>
+//                    <div>First page</div>
+//                    </body>
+//                    </html>""";
+            File file = new File("web" + File.separator + url);
+            byte[] page = FileReader.readFromFile(file);
+
+            String contentType = Files.probeContentType(file.toPath());
 
             output.println("HTTP/1.1 200 OK");
-            output.println("Content-Length:" + page.getBytes().length);
-            output.println("Content-Type:text/html");
+            output.println("Content-Length:" + page.length);
+            output.println("Content-Type:"+contentType);  //application/json
             output.println("");
-            output.println(page);
-
+            //output.print(page);
             output.flush();
-            socket.close();
 
+            var dataOut = new BufferedOutputStream(socket.getOutputStream());
+            dataOut.write(page);
+            dataOut.flush();
+            socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-//    private static void Json(){
-//
-//
-//        JsonConverter converter = new JsonConverter();
-//
-//        var json = converter.ConvertToJson();
-//        System.out.println(json);
-//    }
+    private static void handleTodosURL() {
 
-    private byte[] readFromFile(File file){
-        byte[] content = new byte[0];
-        System.out.println("Does file exists: " + file.exists());
-        if(file.exists() && file.canRead()){
-            try (FileInputStream fileInputStream = new FileInputStream(file)){
-                content = new byte[(int) file.length()];
-                int count = fileInputStream.read(content);
+    }
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+    private static String readHeaders(BufferedReader input) throws IOException {
+        String requestedUrl = "";
+        while (true) {
+            String headerLine = input.readLine();
+            if( headerLine.startsWith("GET"))
+            {
+                requestedUrl = headerLine.split(" ")[1];
             }
+            System.out.println(headerLine);
+            if (headerLine.isEmpty())
+                break;
         }
-        return content;
+        return requestedUrl;
+    }
+
+    private static void createJsonResponse() {
+        var todos = new Todos();
+        todos.todos = new ArrayList<>();
+        todos.todos.add(new Todo("1", "Todo 1", false));
+        todos.todos.add(new Todo("2", "Todo 2", false));
+
+        JsonConverter converter = new JsonConverter();
+
+        var json = converter.convertToJson(todos);
+        System.out.println(json);
+    }
+
+    private static String handleProductsURL(){
+        return "";
     }
 }

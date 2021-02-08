@@ -21,6 +21,8 @@
     <modules>
         <module>Server</module>
         <module>Plugin</module>
+        <module>FileUtils</module>
+        <module>SPI</module>
     </modules>
     <dependencies>
         <dependency>
