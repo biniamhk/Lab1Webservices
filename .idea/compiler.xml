@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Annotation profile for Lab1-WebService" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -12,12 +13,12 @@
         <module name="Server" />
         <module name="fileutils" />
         <module name="spi" />
+        <module name="Plugin" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="File" target="15" />
       <module name="FileUtils" target="15" />
-      <module name="Plugin" target="15" />
       <module name="SPI" target="15" />
     </bytecodeTargetLevel>
   </component>

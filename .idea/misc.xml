@@ -6,11 +6,11 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/Fileutils/pom.xml" />
+        <option value="$PROJECT_DIR$/Plugin/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/Plugin/pom.xml" />
         <option value="$PROJECT_DIR$/SPI/pom.xml" />
       </set>
     </option>
