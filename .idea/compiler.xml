@@ -10,10 +10,16 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.16/lombok-1.18.16.jar" />
         </processorPath>
-        <module name="Server" />
+        <module name="plugin" />
         <module name="fileutils" />
         <module name="spi" />
         <module name="Plugin" />
+      </profile>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
