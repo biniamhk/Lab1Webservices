@@ -12,19 +12,14 @@
         </processorPath>
         <module name="plugin" />
         <module name="fileutils" />
+        <module name="Server" />
+        <module name="FileUtils" />
         <module name="spi" />
         <module name="Plugin" />
-      </profile>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="Server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="File" target="15" />
-      <module name="FileUtils" target="15" />
       <module name="SPI" target="15" />
     </bytecodeTargetLevel>
   </component>
