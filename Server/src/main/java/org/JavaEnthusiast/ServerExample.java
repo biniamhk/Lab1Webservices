@@ -1,8 +1,6 @@
 package org.JavaEnthusiast;
 
-import org.JavaEnthusiast.models.Todos;
 import org.JavaEnthusiast.FileUtils.FileReader;
-import org.JavaEnthusiast.models.Todo;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -39,33 +37,8 @@ public class ServerExample {
 
             String url = readHeaders(input);
 
-//            if( url.equals("/products"))
-//                handleProductsURL();
-//            else if( url.equals("/todos"))
-//                handleTodosURL();
-//
-//            Map<String,  URLHandler > routes = new HashMap<>();
-//
-//            routes.put("/products", new ProductsHandler());
-//            routes.put("/todos", new TodosHandler());
-//
-//            var handler = routes.get(url);
-//            if( handler != null)
-//                handler.handleURL();
-//            else
-//                //It's a file
-
             var output = new PrintWriter(socket.getOutputStream());
-//            String page = """
-//                    <html>
-//                    <head>
-//                        <title>Hello World!</title>
-//                    </head>
-//                    <body>
-//                    <h1>Hello there</h1>
-//                    <div>First page</div>
-//                    </body>
-//                    </html>""";
+
             File file = new File("web" + File.separator + url);
             byte[] page = FileReader.readFromFile(file);
 
@@ -73,9 +46,8 @@ public class ServerExample {
 
             output.println("HTTP/1.1 200 OK");
             output.println("Content-Length:" + page.length);
-            output.println("Content-Type:" + contentType);  //application/json
+            output.println("Content-Type:" + "contentType, contacts.json");  //application/json
             output.println("");
-            //output.print(page);
             output.flush();
 
             var dataOut = new BufferedOutputStream(socket.getOutputStream());
@@ -91,7 +63,7 @@ public class ServerExample {
         String requestedUrl = "";
         while (true) {
             String headerLine = input.readLine();
-            if (headerLine.startsWith("GET")) {
+            if (headerLine.startsWith("GET") || headerLine.startsWith("POST")){
                 requestedUrl = headerLine.split(" ")[1];
             }
             System.out.println(headerLine);
@@ -101,15 +73,13 @@ public class ServerExample {
         return requestedUrl;
     }
 
-//    private static void createJsonResponse() {
-//        var todos = new Todos();
-//        todos.todos = new ArrayList<>();
-//        todos.todos.add(new Todo("1", "Todo 1", false));
-//        todos.todos.add(new Todo("2", "Todo 2", false));
-//
-//        JsonConverter converter = new JsonConverter();
-//
-//        var json = converter.convertToJson(todos);
-//        System.out.println(json);
-//    }
+    private static void createJsonResponse() {
+        DataCall dataCall = new DataCall();
+
+        JsonConverter converter = new JsonConverter();
+
+        var json = converter.convertToJson(dataCall.getAll());
+        System.out.println(json);
+
+    }
 }

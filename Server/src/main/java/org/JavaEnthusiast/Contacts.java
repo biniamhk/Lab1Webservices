@@ -1,26 +1,25 @@
 package org.JavaEnthusiast;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Contacts1 {
+@Table(name= "Contacts")
+public class Contacts {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
-    @Column
+
     private String FirstName;
-    @Column
     private String LastName;
 
-    public Contacts1(int ID, String firstName, String lastName) {
+    public Contacts(int ID, String firstName, String lastName) {
         this.ID = ID;
-        FirstName = firstName;
-        LastName = lastName;
+        this.FirstName = firstName;
+        this.LastName = lastName;
     }
 
-    public Contacts1() {
+    public Contacts() {
 
     }
 

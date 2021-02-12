@@ -10,16 +10,16 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.16/lombok-1.18.16.jar" />
         </processorPath>
+        <module name="Server" />
         <module name="plugin" />
         <module name="fileutils" />
-        <module name="Server" />
-        <module name="FileUtils" />
         <module name="spi" />
-        <module name="Plugin" />
+        <module name="FileUtils" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="File" target="15" />
+      <module name="Plugin" target="15" />
       <module name="SPI" target="15" />
     </bytecodeTargetLevel>
   </component>
