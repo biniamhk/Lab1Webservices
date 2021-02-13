@@ -1,12 +1,10 @@
 package org.JavaEnthusiast;
 
 import org.JavaEnthusiast.FileUtils.FileReader;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -46,7 +44,7 @@ public class ServerExample {
 
             output.println("HTTP/1.1 200 OK");
             output.println("Content-Length:" + page.length);
-            output.println("Content-Type:" + "contentType, contacts.json");  //application/json
+            output.println("Content-Type:" + contentType);  //application/json
             output.println("");
             output.flush();
 
@@ -61,10 +59,19 @@ public class ServerExample {
 
     private static String readHeaders(BufferedReader input) throws IOException {
         String requestedUrl = "";
+        String requestType = "";
         while (true) {
             String headerLine = input.readLine();
+
             if (headerLine.startsWith("GET") || headerLine.startsWith("POST")){
+                requestType = headerLine.split(" ")[0];
                 requestedUrl = headerLine.split(" ")[1];
+            }
+            else if(headerLine.startsWith("Content-Type: ")){
+
+            }
+            else if(headerLine.startsWith("Content-Length: ")){
+
             }
             System.out.println(headerLine);
             if (headerLine.isEmpty())

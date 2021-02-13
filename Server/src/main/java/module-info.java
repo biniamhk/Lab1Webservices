@@ -1,5 +1,4 @@
-module Server {
-    requires org.JavaEnthusiast.spi;
+module Server{
     requires org.JavaEnthusiast.FileUtils;
     requires java.sql;
     requires java.persistence;
