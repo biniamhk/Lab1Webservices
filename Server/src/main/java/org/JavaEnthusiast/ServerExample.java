@@ -5,6 +5,7 @@ import org.JavaEnthusiast.FileUtils.FileReader;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -30,7 +31,6 @@ public class ServerExample {
     }
 
     private static void handleConnection(Socket socket) {
-
         DataCall dataCall = new DataCall();
 
         System.out.println(Thread.currentThread());
@@ -53,12 +53,14 @@ public class ServerExample {
                 output.println(jsonResponse);
                 output.flush();
 
-                var dataOut = new BufferedOutputStream(socket.getOutputStream());
+               /* var dataOut = new BufferedOutputStream(socket.getOutputStream());
                 dataOut.write(jsonResponse.getBytes());
                 dataOut.flush();
-                socket.close();
+                socket.close();*/
             }
             else if(url.equals("/upload")){
+
+
 
 //                output.println("HTTP/1.1 200 OK");
 //               // output.println("Content-Length:" + jsonResponse.getBytes().length);
@@ -82,7 +84,7 @@ public class ServerExample {
                 output.println("Content-Type:" + contentType);  //application/json
                 //output.println("Content-type::" + "contacts.json");
                 output.println("");
-                output.print(url);
+                //output.print(page);
                 output.flush();
 
                 var dataOut = new BufferedOutputStream(socket.getOutputStream());
