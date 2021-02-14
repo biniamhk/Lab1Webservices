@@ -26,8 +26,8 @@ Host: localhost
 POST http://localhost:5050/upload
 Host: localhost
 Content-Type: application/json
+
 {
-  "ID": 4,
   "FirstName": "Bim",
   "LastName": "Ils"
 }
