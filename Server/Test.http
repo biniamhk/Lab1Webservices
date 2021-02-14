@@ -18,11 +18,16 @@ Host: localhost
 
 ###
 
-#POST http://localhost:5050/upload
-#Host: localhost
-#Content-Type: application/json
-#
-#{
-#  "type": "This is a json body",
-#  "value": 1
-#}
+GET http://localhost:5050/contacts
+Host: localhost
+
+###
+
+POST http://localhost:5050/upload
+Host: localhost
+Content-Type: application/json
+{
+  "ID": 4,
+  "FirstName": "Bim",
+  "LastName": "Ils"
+}

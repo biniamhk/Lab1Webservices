@@ -7,8 +7,5 @@ module Server{
     requires com.fasterxml.classmate;
     requires java.xml.bind;
     requires com.google.gson;
-    opens org.JavaEnthusiast to org.hibernate.orm.core;
-   // requires java.xml;
-    //requires java.logging;
-
+    opens org.JavaEnthusiast to org.hibernate.orm.core, com.google.gson;
 }
