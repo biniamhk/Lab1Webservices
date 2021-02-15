@@ -1,13 +1,12 @@
 module Server{
     requires org.JavaEnthusiast.FileUtils;
-    requires java.sql;
-    requires java.persistence;
-    requires org.hibernate.orm.core;
-    requires net.bytebuddy;
-    requires com.fasterxml.classmate;
-    requires java.xml.bind;
     requires com.google.gson;
+    requires org.JavaEnthusiast.spi;
     requires org.json;
-    opens org.JavaEnthusiast to org.hibernate.orm.core, com.google.gson;
     uses org.JavaEnthusiast.FileUtils.FileReader;
+    uses org.JavaEnthusiast.DataCall;
+    uses org.JavaEnthusiast.ServerExample;
+    uses org.JavaEnthusiast.spi.ContactDao;
+    uses org.JavaEnthusiast.JsonConverter;
+
 }

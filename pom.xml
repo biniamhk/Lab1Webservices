@@ -22,7 +22,9 @@
 <!--        <module>spi</module>-->
         <module>Server</module>
         <module>FileUtils</module>
-<!--        <module>Plugin</module>-->
+        <module>Plugin</module>
+        <module>spi</module>
+        <!--        <module>Plugin</module>-->
     </modules>
     <dependencies>
         <dependency>

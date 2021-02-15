@@ -1,7 +1,3 @@
 org\JavaEnthusiast\ServerExample.class
-org\JavaEnthusiast\Contacts.class
-org\JavaEnthusiast\DataCall.class
 module-info.class
-org\JavaEnthusiast\models\Todo.class
-org\JavaEnthusiast\models\Todos.class
 org\JavaEnthusiast\JsonConverter.class

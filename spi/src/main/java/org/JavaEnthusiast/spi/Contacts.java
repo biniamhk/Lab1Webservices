@@ -1,9 +1,9 @@
-package org.JavaEnthusiast;
+package org.JavaEnthusiast.spi;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name= "Contacts")
+@Table(name= "contacts")
 public class Contacts {
 
     @Id
