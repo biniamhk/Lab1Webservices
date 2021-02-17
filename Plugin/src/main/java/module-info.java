@@ -1,9 +1,13 @@
-import org.JavaEnthusiast.ContactDaoImpl;
-import org.JavaEnthusiast.spi.ContactDao;
+
+import org.plugin.ContactDaoImpl;
+import org.spi.ContactDao;
 
 module Plugin {
-    uses org.JavaEnthusiast.spi.ContactDao;
-    requires org.JavaEnthusiast.spi;
+    requires org.spi;
     requires java.persistence;
     provides ContactDao with ContactDaoImpl;
+    requires java.sql;
+    requires net.bytebuddy;
+    requires com.fasterxml.classmate;
+    requires java.xml.bind;
 }

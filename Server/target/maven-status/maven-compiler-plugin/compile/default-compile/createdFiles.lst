@@ -1,3 +1,4 @@
 org\JavaEnthusiast\ServerExample.class
+org\JavaEnthusiast\DataCall.class
 module-info.class
 org\JavaEnthusiast\JsonConverter.class

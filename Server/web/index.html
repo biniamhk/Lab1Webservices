@@ -2,7 +2,7 @@
 <head>
     <style>
         h1{
-            font-size:160px;
+            font-size:80px;
             font-weight:800;
             text-align:center;
             font-family: 'Roboto', sans-serif;
@@ -12,19 +12,22 @@
             font-size:25px;
             text-align:center;
             font-family: 'Roboto', sans-serif;
-            margin-top:-120px;
+            margin-top:-30px;
         }
         p{
             text-align:center;
             font-family: 'Roboto', sans-serif;
             font-size:12px;
         }
-
         .container
         {
             width:300px;
-            margin: 0 auto;
-            margin-top:15%;
+            margin: 1% auto 0;
+        }
+        .container2
+        {
+            width:150px;
+            margin: 1% auto 0;
         }
     </style>
     <h1>Checking header</h1>
@@ -34,6 +37,12 @@
     <h1>Hello from Server</h1>
     <h2>Your access is localhost:5050</h2>
     <p>.</p>
+</div>
+<div class="container2">
+    <button type="button"
+            onclick="document.getElementById('datetime').innerHTML = Date()">
+        Click me to display Date and Time.</button>
+    <p id="datetime"></p>
 </div>
 </body>
 </html>

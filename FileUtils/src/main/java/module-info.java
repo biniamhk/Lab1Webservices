@@ -1,3 +1,3 @@
-module org.JavaEnthusiast.FileUtils {
-    exports org.JavaEnthusiast.FileUtils;
+module org.fileutils{
+    exports org.fileutils;
 }

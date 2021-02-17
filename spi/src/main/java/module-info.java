@@ -1,10 +1,12 @@
-module org.JavaEnthusiast.spi {
-    exports org.JavaEnthusiast.spi;
+module org.spi {
+    exports org.spi;
     requires java.sql;
     requires java.persistence;
     requires org.hibernate.orm.core;
     requires net.bytebuddy;
     requires com.fasterxml.classmate;
+    requires com.google.gson;
     requires java.xml.bind;
-    opens org.JavaEnthusiast.spi to org.hibernate.orm.core, com.google.gson;
+    opens org.spi to org.hibernate.orm.core, com.google.gson;
+
 }
